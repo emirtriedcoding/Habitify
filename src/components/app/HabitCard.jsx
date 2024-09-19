@@ -41,6 +41,8 @@ const HabitCard = ({ habit, isExapnded }) => {
   useEffect(() => {
     const date = formattedDate();
 
+    console.log(date);
+
     const completedToday = habit.records.some((record) => record.date === date);
 
     setIsCompletedToday(completedToday);
@@ -49,9 +51,13 @@ const HabitCard = ({ habit, isExapnded }) => {
   const recordMutation = useMutation({
     mutationFn: () => axios.put(`/api/habits/record/${habit._id}`),
     onSuccess: async (res) => {
+      queryClient.invalidateQueries(["habits"]).then(() => {
+        queryClient.refetchQueries(["habits"]);
+      });
       if (res.status === 201) {
+       setTimeout(() => {
         completeAudio.play();
-        await confetti({
+        confetti({
           angle: 90, // Explosion happens upwards
           spread: 160, // Maximum spread for particles
           startVelocity: 60, // Particles shoot fast
@@ -62,12 +68,10 @@ const HabitCard = ({ habit, isExapnded }) => {
           scalar: 1.2, // Size of the confetti particles
           zIndex: 10000, // Ensures confetti appears on top
         });
+       }, 250);
       } else {
         removeAudio.play();
       }
-      queryClient.invalidateQueries(["habits"]).then(() => {
-        queryClient.refetchQueries(["habits"]);
-      });
     },
     onError: (err) => {
       toast.error(err.response.data.message);

@@ -59,9 +59,10 @@ export const checkTrialStatus = (createdAt, isPaid) => {
 };
 
 export const formattedDate = (date) => {
-  const d = date || new Date();
+  const d = new Date(date || new Date().toLocaleString("en-US", { timeZone: "Asia/Tehran" }));
   return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`;
 };
+
 
 export const hexToRgba = (hex, opacity) => {
   let r = 0,
