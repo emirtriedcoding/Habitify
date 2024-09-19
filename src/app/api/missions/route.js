@@ -43,9 +43,14 @@ export const POST = async (req) => {
   const trialStatus = checkTrialStatus(user.createdAt, user.isPaid);
 
   if (!trialStatus.valid) {
-    return Response.json({
-      message: trialStatus.message,
-    });
+    return Response.json(
+      {
+        message: trialStatus.message,
+      },
+      {
+        status: 403,
+      },
+    );
   }
 
   const { type } = await req.json();

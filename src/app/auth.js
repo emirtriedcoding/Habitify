@@ -111,7 +111,7 @@ export const {
         httpOnly: true,
         path: "/",
         sameSite: "lax", // or "strict" or "none" if needed
-        secure: true, // true in production
+        secure: false, // true in production
       },
     },
   },

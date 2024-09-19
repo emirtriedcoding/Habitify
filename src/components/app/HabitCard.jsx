@@ -5,10 +5,11 @@ import Link from "next/link";
 
 import HeatMap from "@uiw/react-heat-map";
 
+import confetti from "canvas-confetti";
+
 import { useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import confetti  from "canvas-confetti";
 import { formattedDate } from "@/lib/helpers";
 import { hexToRgba } from "@/lib/helpers";
 
@@ -38,7 +39,7 @@ const HabitCard = ({ habit, isExapnded }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    const date = formattedDate(new Date());
+    const date = formattedDate();
 
     const completedToday = habit.records.some((record) => record.date === date);
 
@@ -209,8 +210,9 @@ const HabitCard = ({ habit, isExapnded }) => {
             className={`${isCompletedToday ? "border-2 border-success hover:border-success" : ""} btn btn-square btn-outline btn-sm flex items-center justify-center !bg-transparent`}
           >
             {recordMutation.isPending && (
-              <span className="loading loading-spinner loading-sm mt-0.5"></span>
+              <span className="loading loading-spinner loading-sm mt-[5px]"></span>
             )}
+
             <Check
               className={`transition ${!recordMutation.isPending && isCompletedToday ? "visible text-success opacity-100" : "invisible opacity-0"}`}
             />

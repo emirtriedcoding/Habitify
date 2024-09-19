@@ -97,7 +97,7 @@ const NewGroupHabitModal = () => {
             />
           </label>
 
-          <button disabled={isSubmitting} className="btn btn-primary w-full">
+          <button disabled={isSubmitting || mutation.isPending } className="btn btn-primary w-full">
             ثبت و ایجاد
           </button>
         </form>

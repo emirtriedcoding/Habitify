@@ -12,6 +12,8 @@ export const POST = async (req) => {
   if (!trialStatus.valid) {
     return Response.json({
       message: trialStatus.message,
+    }, {
+      status: 403
     });
   }
 

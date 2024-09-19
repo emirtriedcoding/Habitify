@@ -37,6 +37,8 @@ export const PUT = async (req, { params }) => {
   if (!trialStatus.valid) {
     return Response.json({
       message: trialStatus.message,
+    }, {
+      status: 403,
     });
   }
 
@@ -66,7 +68,7 @@ export const PUT = async (req, { params }) => {
     );
   }
 
-  const date = formattedDate(new Date());
+  const date = formattedDate();
 
   if (habit.records.some((record) => record.date === date)) {
     habit.records = habit.records.filter((record) => record.date !== date);
