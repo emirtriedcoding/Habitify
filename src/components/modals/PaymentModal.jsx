@@ -15,21 +15,29 @@ const PaymentModal = () => {
   const status = searchParams.get("status");
   const authority = searchParams.get("Authority");
 
-  useEffect(async () => {
-    if (status === "OK") {
-      try {
-        const res = await axios.put("/api/verify-payment", {
-          authority,
-        });
+  useEffect(() => {
+    const verifyPayment = async () => {
+      if (status && status === "OK" && authority) {
+        try {
+          const res = await axios.put("/api/verify-payment", { authority });
 
-        setRefId(res.data.ref_id);
+          setRefId(res.data.ref_id);
 
-        document.getElementById("payment_modal").showModal();
-      } catch (error) {
-        toast.error("خطای سرور !");
+          const paymentModal = document.getElementById("payment_modal");
+          if (paymentModal) {
+            paymentModal.showModal();
+          } else {
+            console.error("Payment modal not found!");
+          }
+        } catch (error) {
+          toast.error("خطای سرور !");
+          console.error("Error verifying payment:", error);
+        }
       }
-    }
-  }, [searchParams, status, authority]);
+    };
+
+    verifyPayment();
+  }, [searchParams, status, authority]); 
 
   return (
     <dialog id="payment_modal" className="modal">
