@@ -43,7 +43,7 @@ const RegisterForm = ({ setCurrentView }) => {
       signIn("credentials", {
         email,
         password,
-        callbackUrl: "/my-habits",
+        callbackUrl: "/app/my-habits",
       });
     } catch (error) {
       setErr(error.response.data.message);

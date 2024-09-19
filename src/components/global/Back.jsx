@@ -6,7 +6,7 @@ const Back = () => {
   const router = useRouter();
 
   const handleBack = () => {
-    router.back("/my-habits");
+    router.back("/app/my-habits");
     router.refresh()
   };
 

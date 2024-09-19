@@ -301,7 +301,7 @@ const DailyTasks = () => {
               <p className="text-center font-bold">
                 اولین عادتو بساز تا ماموریت ها باز شن
               </p>
-              <Link href="/my-habits" className="btn btn-primary">
+              <Link href="/app/my-habits" className="btn btn-primary">
                 ایجاد اولین عادت
               </Link>
             </>

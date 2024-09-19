@@ -21,7 +21,7 @@ export const generateMetadata = async ({ params }) => {
 const EditHabitPage = async ({ params }) => {
   const { habitId } = params;
 
-  if (!isValidObjectId(habitId)) return redirect("/my-habits");
+  if (!isValidObjectId(habitId)) return redirect("/app/my-habits");
 
   return (
     <div className="flex flex-col items-center">
