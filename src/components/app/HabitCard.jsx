@@ -8,7 +8,7 @@ import HeatMap from "@uiw/react-heat-map";
 import { useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { confetti } from "@tsparticles/confetti";
+import confetti  from "canvas-confetti";
 import { formattedDate } from "@/lib/helpers";
 import { hexToRgba } from "@/lib/helpers";
 
@@ -51,13 +51,15 @@ const HabitCard = ({ habit, isExapnded }) => {
       if (res.status === 201) {
         completeAudio.play();
         await confetti({
-          origin: { y: 0.6 }, // Adjust the starting point of confetti
-          spread: 120, // Increase spread on larger screens
-          particleCount: 300, // More particles on bigger screens
-          gravity: 1, // Gravity to control how fast they fall
-          scalar: 1.3, // Scale for larger screens
-          ticks: 250, // Duration of the confetti effect
-          zIndex: 10000,
+          angle: 90, // Explosion happens upwards
+          spread: 160, // Maximum spread for particles
+          startVelocity: 60, // Particles shoot fast
+          particleCount: 200, // Number of particles for the explosion
+          origin: { y: 0.6 }, // Starting point
+          colors: ["#ff0000", "#00ff00", "#0000ff", "#ff7700", "#f0e130"], // Explosion colors
+          gravity: 1, // Gravity for how fast they fall
+          scalar: 1.2, // Size of the confetti particles
+          zIndex: 10000, // Ensures confetti appears on top
         });
       } else {
         removeAudio.play();

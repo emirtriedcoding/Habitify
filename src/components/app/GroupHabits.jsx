@@ -45,10 +45,7 @@ const GroupHabits = () => {
   const mutation = useMutation({
     mutationFn: (id) => axios.put(`/api/group-habits/complete/${id}`),
     onSuccess: async () => {
-      queryClient.invalidateQueries(["group-habits"]).then(() => {
-        queryClient.refetchQueries(["group-habits"]);
-      });
-      router.refresh();
+      await queryClient.invalidateQueries(["group-habits"]);
       await confetti({
         angle: 90, // Explosion happens upwards
         spread: 160, // Maximum spread for particles

@@ -31,14 +31,14 @@ const NewGroupHabitModal = () => {
 
   const mutation = useMutation({
     mutationFn: async ({ name, description }) => {
-      axios.post("/api/group-habits/new", {
+      return axios.post("/api/group-habits/new", {
         name,
         description,
       });
     },
     onSuccess: () => {
-      document.getElementById("new_group_habit_modal").close();
       queryClient.invalidateQueries(["group-habits"]).then(() => {
+        document.getElementById("new_group_habit_modal").close();
         reset();
       });
     },
