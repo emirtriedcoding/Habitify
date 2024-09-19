@@ -43,14 +43,22 @@ const GroupHabits = () => {
   const mutation = useMutation({
     mutationFn: (id) => axios.put(`/api/group-habits/complete/${id}`),
     onSuccess: async () => {
-      await queryClient.invalidateQueries(["group-habits"]);
+      await queryClient.invalidateQueries(["group-habits"]).then(() => {
+        queryClient.refetchQueries(["group-habits"]);
+      });
       await confetti({
-        spread: 70,
+        origin: { y: 0.6 }, // Adjust the starting point of confetti
+        spread: 120, // Increase spread on larger screens
+        particleCount: 300, // More particles on bigger screens
+        gravity: 1, // Gravity to control how fast they fall
+        scalar: 1.3, // Scale for larger screens
+        ticks: 250, // Duration of the confetti effect
+        zIndex: 10000,
       });
     },
-    onError : (err) => {
+    onError: (err) => {
       toast.error(err.response.data.message);
-    }
+    },
   });
 
   const generateLeaderboard = (habit) => {
@@ -98,7 +106,10 @@ const GroupHabits = () => {
     return (
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
         {Array.from({ length: 3 }).map((_, i) => (
-          <div key={i} className="card border border-base-300 bg-base-100 shadow-sm">
+          <div
+            key={i}
+            className="card border border-base-300 bg-base-100 shadow-sm"
+          >
             <div className="card-body gap-5">
               <div className="skeleton h-6 w-1/2" />
               <div className="skeleton h-52 w-full" />
@@ -107,7 +118,6 @@ const GroupHabits = () => {
         ))}
       </div>
     );
-
 
   const tabs = [
     {
@@ -145,7 +155,6 @@ const GroupHabits = () => {
     }
   };
 
-
   return habits.length !== 0 ? (
     <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
       {habits.map((habit) => (
@@ -153,7 +162,7 @@ const GroupHabits = () => {
           key={habit._id}
           className="card border border-base-300 bg-base-100 shadow-sm"
         >
-          <div className="card-body gap-5 max-h-[500px]">
+          <div className="card-body max-h-[500px] gap-5">
             <div className="flex items-center gap-5">
               <h4 className="text-lg font-bold">{habit.name}</h4>
               <div className="flex items-center gap-1 rounded-lg bg-base-200 px-2 py-1 text-xs">
@@ -168,7 +177,11 @@ const GroupHabits = () => {
                   onClick={() => handleTabChange(habit._id, index + 1)}
                   className={`${activeTabs[habit._id] === index + 1 ? "tab-active" : ""} tab-sm tab gap-1`}
                 >
-                  <tab.icon className="hidden xl:block" size={15} strokeWidth={1.5} />
+                  <tab.icon
+                    className="hidden xl:block"
+                    size={15}
+                    strokeWidth={1.5}
+                  />
                   {tab.label}
                 </div>
               ))}
@@ -197,35 +210,39 @@ const GroupHabits = () => {
                     </div>
                   ))
                 ) : (
-                  <div className="text-center font-bold text-sm">هنوز کسی تکمیل نکرده !</div>
+                  <div className="text-center text-sm font-bold">
+                    هنوز کسی تکمیل نکرده !
+                  </div>
                 )}
               </div>
             )}
             {activeTabs[habit._id] === 2 && (
               <div className="space-y-3 rounded-lg bg-base-200 p-3">
-                {generateLeaderboard(habit).length !== 0 ? generateLeaderboard(habit).map((entry, index) => (
-                  <div
-                    key={entry.user._id}
-                    className="flex items-center justify-between"
-                  >
-                    <div className="flex items-center gap-2">
-                      <span>{index + 1}.</span>
-                      <img
-                        src={entry.user.image || "/assets/noavatar.png"}
-                        alt="User Image"
-                        className="h-8 w-8 rounded-full border border-base-300"
-                      />
-                      <div className="flex flex-col gap-1 text-[10px] lg:text-xs">
-                        <span>{entry.user.name}</span>
-                        <span>تکمیل شده ها : {entry.totalCompletions}</span>
+                {generateLeaderboard(habit).length !== 0 ? (
+                  generateLeaderboard(habit).map((entry, index) => (
+                    <div
+                      key={entry.user._id}
+                      className="flex items-center justify-between"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{index + 1}.</span>
+                        <img
+                          src={entry.user.image || "/assets/noavatar.png"}
+                          alt="User Image"
+                          className="h-8 w-8 rounded-full border border-base-300"
+                        />
+                        <div className="flex flex-col gap-1 text-[10px] lg:text-xs">
+                          <span>{entry.user.name}</span>
+                          <span>تکمیل شده ها : {entry.totalCompletions}</span>
+                        </div>
                       </div>
+                      {index === 0 && <span>🥇</span>}
+                      {index === 1 && <span>🥈</span>}
+                      {index === 2 && <span>🥉</span>}
                     </div>
-                    {index === 0 && <span>🥇</span>}
-                    {index === 1 && <span>🥈</span>}
-                    {index === 2 && <span>🥉</span>}
-                  </div>
-                )) : (
-                  <div className="text-center font-bold text-sm" >
+                  ))
+                ) : (
+                  <div className="text-center text-sm font-bold">
                     فعلا هیشکی !
                   </div>
                 )}

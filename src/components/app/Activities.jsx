@@ -26,7 +26,7 @@ const Activities = ({ followings }) => {
           className={`tab text-[9px] lg:text-base ${activeTab === 1 && "tab-active"}`}
           onClick={() => setActiveTab(1)}
         >
-          من
+          همه
         </span>
         <span
           role="tab"

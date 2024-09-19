@@ -51,8 +51,13 @@ const HabitCard = ({ habit, isExapnded }) => {
       if (res.status === 201) {
         completeAudio.play();
         await confetti({
-          particleCount: 100,
-          spread: 80,
+          origin: { y: 0.6 }, // Adjust the starting point of confetti
+          spread: 120, // Increase spread on larger screens
+          particleCount: 300, // More particles on bigger screens
+          gravity: 1, // Gravity to control how fast they fall
+          scalar: 1.3, // Scale for larger screens
+          ticks: 250, // Duration of the confetti effect
+          zIndex: 10000,
         });
       } else {
         removeAudio.play();

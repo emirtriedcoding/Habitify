@@ -36,7 +36,7 @@ const Profile = ({ user, isPreview, currentUser }) => {
   };
 
   return (
-    <div className="space-y-6 border border-base-300 lg:border-none p-5 rounded-lg">
+    <div className="space-y-6 rounded-lg border border-base-300 p-5 lg:border-none">
       <div className="flex flex-col items-center justify-between gap-5 lg:flex-row">
         <div className="flex items-center gap-3">
           <img
@@ -52,9 +52,9 @@ const Profile = ({ user, isPreview, currentUser }) => {
         {user._id === currentUser._id ? (
           <button
             onClick={() =>
-              navigator.clipboard.writeText(
-                `http://localhost:3000/${user.username}`,
-              )
+              navigator.clipboard
+                .writeText(`https://habitify.ir/${user.username}`)
+                .then(() => toast.success("لینک کپی شد !"))
             }
             className="btn btn-primary w-full lg:w-fit"
           >
@@ -74,7 +74,10 @@ const Profile = ({ user, isPreview, currentUser }) => {
       </div>
       <div className="flex flex-wrap items-center gap-3">
         {user.habits.slice(0, 5).map((habit) => (
-          <div key={habit._id} className="rounded-lg bg-primary/5 p-3 text-xs font-bold">
+          <div
+            key={habit._id}
+            className="rounded-lg bg-primary/5 p-3 text-xs font-bold"
+          >
             {habit.name}
           </div>
         ))}
@@ -99,7 +102,10 @@ const Profile = ({ user, isPreview, currentUser }) => {
       </p>
       <div className="flex flex-wrap items-center gap-3">
         {userAchievements.map((ach) => (
-          <div key={ach.icon} className="flex h-10 w-10 items-center justify-center rounded-lg border border-base-200 bg-primary/10 text-sm">
+          <div
+            key={ach.icon}
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-base-200 bg-primary/10 text-sm"
+          >
             {ach.icon}
           </div>
         ))}
