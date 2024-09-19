@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+.w-heatmap-week {
+  font-size: 7px !important;
+}
+
+.w-heatmap {
+  width: 230px; /* Default width for small screens */
+}
+
+@media (min-width: 768px) {
+  /* Medium screens (md) */
+  .w-heatmap {
+    width: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Large screens (lg) */
+  .w-heatmap {
+    width: 350px;
+  }
+}
