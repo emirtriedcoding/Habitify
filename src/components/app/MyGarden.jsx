@@ -211,7 +211,7 @@ const MyGarden = ({ userId, isProfile }) => {
 
           const boxContent = (
             <div
-              className={`relative flex ${isProfile ? "h-10 w-10 md:h-14 md:w-14 lg:h-20 lg:w-20" : "h-12 w-12 md:h-16 md:w-16 lg:h-24 lg:w-24"} cursor-pointer items-center justify-center border border-dashed border-base-300 p-4 transition hover:bg-primary/20 ${getCornerClass(
+              className={`relative flex ${isProfile ? "h-12 w-12 md:h-16 md:w-16 lg:h-20 lg:w-20" : "h-12 w-12 md:h-16 md:w-16 lg:h-24 lg:w-24"} cursor-pointer items-center justify-center border border-dashed border-base-300 p-4 transition hover:bg-primary/20 ${getCornerClass(
                 i,
               )}`}
             >

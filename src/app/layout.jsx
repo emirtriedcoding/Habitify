@@ -17,18 +17,18 @@ export const metadata = {
 const font = localFont({
   src: [
     {
-      path: "../../public/fonts/Anjoman-R.woff",
+      path: "../../public/fonts/Pelak-R.woff",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../../public/fonts/Anjoman-B.woff",
-      weight: "700",
+      path: "../../public/fonts/Pelak-S.woff",
+      weight: "600",
       style: "normal",
     },
     {
-      path: "../../public/fonts/Anjoman-S.woff",
-      weight: "600",
+      path: "../../public/fonts/Pelak-B.woff",
+      weight: "800",
       style: "normal",
     },
   ],
@@ -39,7 +39,7 @@ const RootLayout = ({ children }) => {
     <html lang="fa" dir="rtl">
       <body className={font.className} data-theme="emerald">
         <SessionProvider>
-          <Toaster theme="light" closeButton richColors />
+          <Toaster className={font.className} theme="light" closeButton richColors />
           {children}
         </SessionProvider>
       </body>

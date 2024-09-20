@@ -41,7 +41,7 @@ const Activities = ({ followings }) => {
           {data.map((a) => (
             <div
               key={a._id}
-              className="flex items-center justify-between gap-3"
+              className="flex flex-col lg:flex-row items-center justify-between gap-3"
             >
               <img
                 src={a.user.image || "/assets/noavatar.png"}

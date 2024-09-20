@@ -5,9 +5,6 @@ import Profile from "./Profile";
 import Activities from "./Activities";
 
 const Social = ({ user, topUsers }) => {
-  /// TODO : Change the local host url to production url for sharing purpose
-
-
   return (
     <div className="flex flex-col gap-5 lg:flex-row">
       <div className="card border border-base-200 shadow-sm lg:w-1/2">

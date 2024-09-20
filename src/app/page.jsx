@@ -48,7 +48,7 @@ const HomePage = () => {
       <div className="relative z-50 mx-auto min-h-screen max-w-3xl p-5">
         <Header />
         <motion.div
-          className="mt-8 flex min-h-screen flex-col items-center gap-10 lg:!mt-16"
+          className="mt-8 flex min-h-screen flex-col items-center gap-7 lg:gap-10 lg:!mt-16"
           initial={{
             y: -100,
             opacity: 0,
@@ -62,11 +62,10 @@ const HomePage = () => {
           }}
         >
           <h4 className="text-center text-xl font-bold leading-loose text-primary lg:text-4xl">
-            عادت هایی بساز که هرگز فراموششون نکنی !
+            عادت هایی بساز که هرگز فراموششون نکنی
           </h4>
           <p className="text-center text-xs font-semibold leading-loose lg:text-sm">
             اینجا بهت کمک میکنم که به زندگیت بهبود و نظم ببخشی و بهش پایدار باشی
-            !
           </p>
           <div className="relative mt-20 lg:mt-40">
             <Image

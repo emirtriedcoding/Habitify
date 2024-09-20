@@ -84,7 +84,7 @@ const EditTaskModal = ({ habitId }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="card mt-5 w-1/2 border border-base-300 shadow-sm"
+      className="card mt-5 lg:w-1/2 border border-base-300 shadow-sm"
     >
       <div className="card-body gap-3">
         <h3 className="text-lg font-bold">ویرایش عادت</h3>

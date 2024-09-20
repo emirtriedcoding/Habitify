@@ -23,7 +23,7 @@ export const PUT = async (req) => {
       "https://payment.zarinpal.com/pg/v4/payment/verify.json",
       {
         merchant_id: process.env.ZARIN,
-        amount: 2000,
+        amount: 198900,
         authority,
       },
     );

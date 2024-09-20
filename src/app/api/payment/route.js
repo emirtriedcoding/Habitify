@@ -6,7 +6,7 @@ export const POST = async () => {
       "https://payment.zarinpal.com/pg/v4/payment/request.json",
       {
         merchant_id: process.env.ZARIN,
-        amount: 2000,
+        amount: 198900,
         currency: "IRT",
         description: "ارتقا کاربری هبیتیفای",
         callback_url: "https://habitify.ir/app/my-habits",
