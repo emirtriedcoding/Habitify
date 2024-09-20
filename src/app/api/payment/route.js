@@ -9,7 +9,7 @@ export const POST = async () => {
         amount: 2000,
         currency: "IRT",
         description: "ارتقا کاربری هبیتیفای",
-        callback_url: "http://localhost:3000/app/my-habits",
+        callback_url: "https://habitify.ir/app/my-habits",
       },
     );
 
