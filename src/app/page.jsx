@@ -48,7 +48,7 @@ const HomePage = () => {
       <div className="relative z-50 mx-auto min-h-screen max-w-3xl p-5">
         <Header />
         <motion.div
-          className="mt-8 flex min-h-screen flex-col items-center gap-7 lg:gap-10 lg:!mt-16"
+          className="mt-8 flex min-h-screen flex-col items-center gap-7 lg:!mt-16 lg:gap-10"
           initial={{
             y: -100,
             opacity: 0,
@@ -153,9 +153,15 @@ const HomePage = () => {
           <p className="text-center text-sm font-bold leading-loose text-secondary lg:text-lg">
             ویدیو معرفی پلتفرم و نحوه استفاده :
           </p>
+          <video
+            src="/assets/video.mov"
+            className="rounded-lg shadow-sm"
+            controls
+            autoPlay
+           ></video>
           <div className="card border border-base-200 bg-base-100 shadow-sm">
             <div className="card-body gap-5">
-              <Image src="/assets/noavatar.png" width="30" height="30" />
+              <Image src="/assets/noavatar.png" width={35} height={35} />
               <span className="text-lg font-bold">امیررضا صالحی</span>
               <p className="text-sm font-semibold leading-loose text-gray-500">
                 بنظرم واقعا پلتفرم جالب و کاربردی هستش و من سعی میکنم همیشه ازش
