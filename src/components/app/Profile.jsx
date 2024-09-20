@@ -113,7 +113,7 @@ const Profile = ({ user, isPreview, currentUser }) => {
       <MyGarden userId={user._id} isProfile={true} />
       {isPreview && (
         <div className="card border border-base-200 bg-base-100">
-          <div className="card-body gap-3">
+          <div className="card-body gap-3 max-[300px] overflow-y-auto">
             <h2 className="card-title">فعالیت ها</h2>
             {user.activities.length !== 0 ? (
               user.activities.map((a) => (
