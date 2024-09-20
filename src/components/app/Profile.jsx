@@ -36,7 +36,7 @@ const Profile = ({ user, isPreview, currentUser }) => {
   };
 
   return (
-    <div className="space-y-6 rounded-lg border border-base-300 p-5 lg:border-none">
+    <div className="space-y-6 rounded-lg border border-base-300 p-3 lg:border-none">
       <div className="flex flex-col items-center justify-between gap-5 lg:flex-row">
         <div className="flex items-center gap-3">
           <img

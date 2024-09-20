@@ -15,7 +15,7 @@ const TaskReward = ({ rewards}) => {
           ))}
         </div>
         <button
-          onClick={() => document.getElementById("task_reward").close()}
+          onClick={() => document.getElementById("daily_reward").close()}
           className="btn btn-primary w-full"
         >
           حله

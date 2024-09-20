@@ -48,7 +48,7 @@ const Activities = ({ followings }) => {
                 alt="User"
                 className="h-10 w-10 rounded-full"
               />
-              <p className="text-xs font-bold">{a.body}</p>
+              <p className="text-[10px] lg:text-xs font-bold">{a.body}</p>
               <button
                 onClick={() => {
                   a.user.username && router.push(`/app/${a.user.username}`);
@@ -68,14 +68,14 @@ const Activities = ({ followings }) => {
               following.activities.length !== 0 && following.activities.map((activity) => (
                 <div
                   key={activity._id}
-                  className="flex items-center justify-between gap-3"
+                  className="flex flex-col lg:flex-row items-center justify-between gap-3"
                 >
                   <img
                     src={following.image || "/assets/noavatar.png"}
                     alt="User"
                     className="h-10 w-10 rounded-full"
                   />
-                  <p className="text-xs font-bold">{activity.body}</p>
+                  <p className="text-[10px] lg:text-xs font-bold">{activity.body}</p>
                   <button
                     onClick={() => {
                       following.username && router.push(`/app/${following.username}`);

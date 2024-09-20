@@ -8,7 +8,7 @@ const Social = ({ user, topUsers }) => {
   return (
     <div className="flex flex-col gap-5 lg:flex-row">
       <div className="card border border-base-200 shadow-sm lg:w-1/2">
-        <div className="card-body gap-7">
+        <div className="card-body !p-2 gap-7">
           <h5 className="card-title">پروفایل من</h5>
           <Profile user={user} currentUser={user} />
         </div>
