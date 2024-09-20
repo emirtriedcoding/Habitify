@@ -3,6 +3,8 @@ import "./globals.css";
 
 import SessionProvider from "@/providers/session-provider";
 
+import { Analytics } from "@vercel/analytics/react"
+
 import { Toaster } from "sonner";
 
 export const metadata = {
@@ -41,6 +43,7 @@ const RootLayout = ({ children }) => {
         <SessionProvider>
           <Toaster className={font.className} theme="light" closeButton richColors />
           {children}
+          <Analytics />
         </SessionProvider>
       </body>
     </html>
