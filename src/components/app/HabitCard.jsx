@@ -41,8 +41,6 @@ const HabitCard = ({ habit, isExapnded }) => {
   useEffect(() => {
     const date = formattedDate();
 
-    console.log(date);
-
     const completedToday = habit.records.some((record) => record.date === date);
 
     setIsCompletedToday(completedToday);

@@ -1,7 +1,7 @@
 import connectToDb from "@/config/db";
 import User from "@/models/User";
 
-import nodemailer from "nodemailer"
+import nodemailer from "nodemailer";
 
 import { forgotSchema } from "@/lib/schemas";
 import { sign } from "jsonwebtoken";
@@ -22,7 +22,7 @@ export const POST = async (req) => {
       );
     }
 
-    const currentDate = Date.now()
+    const currentDate = Date.now();
 
     if (user.lastEmailedAt > currentDate) {
       return Response.json(
@@ -74,11 +74,10 @@ export const POST = async (req) => {
       `,
     });
 
-    user.lastEmailedAt = currentDate + 180000  /// 3 minutes ;
+    user.lastEmailedAt = currentDate + 180000; /// 3 minutes ;
     await user.save();
 
     return Response.json({ message: "ایمیل بازنشانی با موفقیت ارسال گردید !" });
-
   } catch (error) {
     if (error instanceof z.ZodError) {
       return Response.json(

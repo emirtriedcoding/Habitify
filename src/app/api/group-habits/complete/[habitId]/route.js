@@ -12,7 +12,7 @@ export const PUT = async (req, { params }) => {
         message: "لطفا ابتدا وارد شوید !",
       },
       {
-        status: 400,
+        status: 401,
       },
     );
   }

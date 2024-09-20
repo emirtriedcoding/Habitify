@@ -78,7 +78,7 @@ const Activities = ({ followings }) => {
                   <p className="text-xs font-bold">{activity.body}</p>
                   <button
                     onClick={() => {
-                      following.username && router.push(`/app/${a.user.username}`);
+                      following.username && router.push(`/app/${following.username}`);
                     }}
                     className="btn"
                   >

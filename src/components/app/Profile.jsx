@@ -53,7 +53,7 @@ const Profile = ({ user, isPreview, currentUser }) => {
           <button
             onClick={() =>
               navigator.clipboard
-                .writeText(`https://habitify.ir/${user.username}`)
+                .writeText(`https://habitify.ir/app/${user.username}`)
                 .then(() => toast.success("لینک کپی شد !"))
             }
             className="btn btn-primary w-full lg:w-fit"

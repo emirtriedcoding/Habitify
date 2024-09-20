@@ -6,6 +6,17 @@ import { authUser } from "@/lib/helpers";
 export const POST = async (req) => {
   const user = await authUser();
 
+  if (!user) {
+    return Response.json(
+      {
+        message: "کاربری یافت نشد !",
+      },
+      {
+        status: 401,
+      },
+    );
+  }
+
   const { message, rating } = await req.json();
 
   if (message.length < 3 || !rating) {

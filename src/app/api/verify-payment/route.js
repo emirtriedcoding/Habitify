@@ -6,9 +6,14 @@ export const PUT = async (req) => {
   const user = await authUser();
 
   if (!user) {
-    return Response.json({
-      message: "لطفا ابتدا وارد شوید !",
-    });
+    return Response.json(
+      {
+        message: "لطفا ابتدا وارد شوید !",
+      },
+      {
+        status: 401,
+      },
+    );
   }
 
   const { authority } = await req.json();
@@ -18,7 +23,7 @@ export const PUT = async (req) => {
       "https://payment.zarinpal.com/pg/v4/payment/verify.json",
       {
         merchant_id: process.env.ZARIN,
-        amount: 1990000,
+        amount: 2000,
         authority,
       },
     );
@@ -29,6 +34,10 @@ export const PUT = async (req) => {
       return Response.json({
         message: "پرداخت با موفقیت انجام شد !",
         ref_id: res.data.data.ref_id,
+      });
+    }else {
+      return Response.json({
+        message: "پرداخت از قبل انجام شده است ",
       });
     }
   } catch (error) {

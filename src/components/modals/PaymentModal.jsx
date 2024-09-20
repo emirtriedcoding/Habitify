@@ -12,22 +12,23 @@ const PaymentModal = () => {
 
   const [refId, setRefId] = useState("");
 
-  const status = searchParams.get("status");
+  const status = searchParams.get("Status");
   const authority = searchParams.get("Authority");
 
   useEffect(() => {
     const verifyPayment = async () => {
-      if (status && status === "OK" && authority) {
+      if (status === "OK" && authority) {
         try {
           const res = await axios.put("/api/verify-payment", { authority });
 
-          setRefId(res.data.ref_id);
-
-          const paymentModal = document.getElementById("payment_modal");
-          if (paymentModal) {
-            paymentModal.showModal();
-          } else {
-            console.error("Payment modal not found!");
+          if (res.data.ref_id) {
+            setRefId(res.data.ref_id);
+            const paymentModal = document.getElementById("payment_modal");
+            if (paymentModal) {
+              paymentModal.showModal();
+            } else {
+              console.error("Payment modal not found!");
+            }
           }
         } catch (error) {
           toast.error("خطای سرور !");
@@ -37,7 +38,7 @@ const PaymentModal = () => {
     };
 
     verifyPayment();
-  }, [searchParams, status, authority]); 
+  }, [searchParams, status, authority]);
 
   return (
     <dialog id="payment_modal" className="modal">
@@ -49,7 +50,7 @@ const PaymentModal = () => {
           <p className="text-success">{refId}</p>
         </div>
         <button
-          onClick={() => document.getElementById("task_reward").close()}
+          onClick={() => document.getElementById("payment_modal").close()}
           className="btn btn-primary w-full"
         >
           حله
