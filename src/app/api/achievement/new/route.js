@@ -1,5 +1,4 @@
 import connectToDb from "@/config/db";
-import Activity from "@/models/Activity";
 
 import { achievements, authUser, checkTrialStatus } from "@/lib/helpers";
 
@@ -21,7 +20,7 @@ export const POST = async (req) => {
     );
   }
 
-  const trialStatus = checkTrialStatus(user , user.isPaid);
+  const trialStatus = checkTrialStatus(user, user.isPaid);
 
   if (!trialStatus.valid) {
     return Response.json({ message: trialStatus.message }, { status: 403 });
@@ -102,16 +101,14 @@ export const POST = async (req) => {
 
   connectToDb();
 
-  const newActivity = await Activity.create({
+  user.activities.push({
     body: `کاربر ${user.name} به دستاورد جدیدی دست یافت !`,
-    user: user._id,
   });
 
   user.coins += coinsAdded;
   user.score += scoreAdded;
 
   user.achievements.push({ key });
-  user.activities.push(newActivity._id);
 
   await user.save();
 

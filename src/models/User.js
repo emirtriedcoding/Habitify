@@ -54,7 +54,11 @@ const userSchema = new mongoose.Schema(
       ],
     },
 
-    activities: [{ type: mongoose.Schema.Types.ObjectId, ref: "Activity" }],
+    activities: [
+      {
+        body: { type: String, default: "" },
+      },
+    ],
 
     followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     followings: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],

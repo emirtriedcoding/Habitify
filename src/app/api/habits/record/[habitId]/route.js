@@ -1,6 +1,5 @@
 import connectToDb from "@/config/db";
 import Habit from "@/models/Habit";
-import Activity from "@/models/Activity";
 
 import { authUser, checkTrialStatus, formattedDate } from "@/lib/helpers";
 import { isValidObjectId } from "mongoose";
@@ -80,12 +79,10 @@ export const PUT = async (req, { params }) => {
     habit.records.push({ date, count: 10 });
     await habit.save();
 
-    const newActivity = await Activity.create({
-      body: `کاربر ${user.name} عادت جدیدی را تکمیل کرد !`,
-      user: user._id,
+    user.activities.push({
+      body : `عادت ${habit.name} توسط ${user.name} تکمیل شد !`
     });
-
-    user.activities.push(newActivity._id);
+    
     await user.save();
 
     return Response.json(
