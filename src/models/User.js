@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 import Habit from "./Habit";
 import GroupHabit from "./GroupHabit";
-import Activity from "./Activity";
 
 const userSchema = new mongoose.Schema(
   {
