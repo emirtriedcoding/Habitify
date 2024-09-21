@@ -45,6 +45,8 @@ export const PUT = async (req) => {
     return Response.json({ error: "موجودی کافی نیست !" }, { status: 403 });
   }
 
+  user.coins -= flowerCost;
+
   flower.level += 1;
 
   await user.save();
