@@ -16,7 +16,7 @@ const Social = ({ user, topUsers }) => {
       <div className="!space-y-5 lg:w-1/2">
         <Search />
         <div className="card border border-base-200 shadow-sm">
-          <div className="card-body max-h-[500px] gap-5">
+          <div className="card-body max-h-[500px] overflow-y-auto gap-5">
             <h5 className="card-title">افراد برتر</h5>
             {topUsers.map((user) => (
               <div key={user._id} className="flex items-center justify-between">
