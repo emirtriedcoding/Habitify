@@ -63,9 +63,7 @@ export const PUT = async (req, { params }) => {
       type,
       days,
       frequency,
-      icon,
       color,
-      notifications,
     });
 
     return Response.json({ message: "عادت با موفقیت آپدیت شد !" });

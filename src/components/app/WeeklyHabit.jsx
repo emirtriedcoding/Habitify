@@ -17,7 +17,7 @@ import { toast } from "sonner";
 
 import { Bell, Check, Edit, MoreVertical, Trash2 } from "lucide-react";
 
-const HabitCard = ({ habit, isExapnded }) => {
+const WeeklyHabit = ({ habit, isExapnded }) => {
   const queryClient = useQueryClient();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -82,8 +82,8 @@ const HabitCard = ({ habit, isExapnded }) => {
       return axios.delete(`/api/habits/${habit._id}`)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["habits"]);
       toast.success("عادت با موفقیت حذف شد !");
+      queryClient.invalidateQueries(["habits"]);
     },
   });
 
@@ -187,7 +187,7 @@ const HabitCard = ({ habit, isExapnded }) => {
         </Link>
         <button
           onClick={() =>
-            document.getElementById(`delete_habit_${habit._id}_modal`).showModal()
+            document.getElementById("delete_habit_modal").showModal()
           }
           className="btn btn-sm text-xs font-bold text-error"
         >
@@ -305,7 +305,7 @@ const HabitCard = ({ habit, isExapnded }) => {
             </div>
           </div>
         )}
-        <dialog id={`delete_habit_${habit._id}_modal`} className="modal">
+        <dialog id="delete_habit_modal" className="modal">
           <div className="modal-box">
             <h3 className="text-lg font-bold">مطمئنی ؟ </h3>
             <p className="py-4 text-center text-sm font-bold leading-loose text-error">
@@ -329,4 +329,4 @@ const HabitCard = ({ habit, isExapnded }) => {
   );
 };
 
-export default HabitCard;
+export default WeeklyHabit;

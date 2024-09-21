@@ -67,10 +67,10 @@ const EditTaskModal = ({ habitId }) => {
       return axios.put(`/api/habits/edit/${habit._id}`, data);
     },
     onSuccess: () => {
+      queryClient.invalidateQueries(["habits"]);
       toast.success("عادت با موفقیت ویرایش گردید !", {
         description: "در حال انتقال ...",
       });
-      queryClient.invalidateQueries(["habits"]);
       router.push("/app/my-habits");
     },
   });
