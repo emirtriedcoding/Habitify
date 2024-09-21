@@ -34,16 +34,8 @@ export const POST = async (req) => {
   }
 
   try {
-    const {
-      name,
-      description,
-      type,
-      days,
-      frequency,
-      icon,
-      color,
-      notifications,
-    } = habitSchema.parse(await req.json());
+    const { name, description, type, days, frequency, color } =
+      habitSchema.parse(await req.json());
 
     connectToDb();
 
@@ -53,9 +45,7 @@ export const POST = async (req) => {
       type,
       days,
       frequency,
-      icon,
       color,
-      notifications,
       user: user._id,
     });
 

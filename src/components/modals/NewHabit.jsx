@@ -85,9 +85,7 @@ const NewHabitModal = () => {
       type,
       days,
       frequency,
-      icon,
       color,
-      notifications,
     }) => {
       return axios.post("/api/habits/new", {
         name,
@@ -95,9 +93,7 @@ const NewHabitModal = () => {
         type,
         days,
         frequency,
-        icon,
         color,
-        notifications,
       });
     },
     onSuccess: () => {

@@ -207,7 +207,6 @@ const HabitCard = ({ habit, isExapnded }) => {
             >
               {habit.name}
             </h5>
-            {habit.notifications && <Bell size={14} />}
           </div>
           <button
             disabled={recordMutation.isPending}
