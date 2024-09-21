@@ -157,7 +157,6 @@ const HomePage = () => {
             src="/assets/video.mov"
             className="rounded-lg shadow-sm"
             controls
-            autoPlay
            ></video>
           <div className="card border border-base-200 bg-base-100 shadow-sm">
             <div className="card-body gap-5">
